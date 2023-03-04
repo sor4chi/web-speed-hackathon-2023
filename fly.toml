@@ -1,3 +1,6 @@
+# fly.toml file generated for sor4chi-web-speed-hackathon-2023 on 2023-03-04T10:42:32+09:00
+
+app = "sor4chi-web-speed-hackathon-2023"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
