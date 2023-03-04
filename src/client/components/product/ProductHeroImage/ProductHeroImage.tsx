@@ -1,5 +1,3 @@
-import CanvasKitInit from 'canvaskit-wasm';
-import CanvasKitWasmUrl from 'canvaskit-wasm/bin/canvaskit.wasm?url';
 import classNames from 'classnames';
 import { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
@@ -7,38 +5,16 @@ import type { FC } from 'react';
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { isEqual } from '../../../utils/object';
 import { Anchor } from '../../foundation/Anchor';
-import { AspectRatio } from '../../foundation/AspectRatio';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
-import { WidthRestriction } from '../../foundation/WidthRestriction';
 
 import * as styles from './ProductHeroImage.styles';
-
-async function loadImageAsDataURL(url: string): Promise<string> {
-  const CanvasKit = await CanvasKitInit({
-    // WASM ファイルの URL を渡す
-    locateFile: () => CanvasKitWasmUrl,
-  });
-
-  // 画像を読み込む
-  const data = await fetch(url).then((res) => res.arrayBuffer());
-  const image = CanvasKit.MakeImageFromEncoded(data);
-  if (image == null) {
-    // 読み込みに失敗したとき、透明な 1x1 GIF の Data URL を返却する
-    return 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
-  }
-
-  // 画像を Canvas に描画して Data URL を生成する
-  const canvas = CanvasKit.MakeCanvas(image.width(), image.height());
-  const ctx = canvas.getContext('2d');
-  // @ts-expect-error ...
-  ctx?.drawImage(image, 0, 0);
-  return canvas.toDataURL();
-}
 
 type Props = {
   product: ProductFragmentResponse;
   title: string;
 };
+
+// const FALLBACK_IMAGE_DATA_URL = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
 export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
@@ -49,7 +25,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
     if (thumbnailFile == null) {
       return;
     }
-    loadImageAsDataURL(thumbnailFile.filename).then((dataUrl) => setImageDataUrl(dataUrl));
+    setImageDataUrl(thumbnailFile.filename);
   }, [thumbnailFile]);
 
   if (imageDataUrl === undefined) {
@@ -60,34 +36,44 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
     <GetDeviceType>
       {({ deviceType }) => {
         return (
-          <WidthRestriction>
-            <Anchor href={`/product/${product.id}`}>
-              <div className={styles.container()}>
-                <AspectRatio ratioHeight={9} ratioWidth={16}>
-                  <img className={styles.image()} src={imageDataUrl} />
-                </AspectRatio>
+          <div style={{ width: '100%' }}>
+            <div style={{ margin: '0 auto', maxWidth: '1024px', width: '100%' }}>
+              <Anchor href={`/product/${product.id}`}>
+                <div className={styles.container()}>
+                  <div style={{ aspectRatio: '16 / 9', height: '100%', width: '100%' }}>
+                    <img
+                      loading="eager"
+                      src={imageDataUrl}
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                        width: '100%',
+                      }}
+                    ></img>
+                  </div>
 
-                <div className={styles.overlay()}>
-                  <p
-                    className={classNames(styles.title(), {
-                      [styles.title__desktop()]: deviceType === DeviceType.DESKTOP,
-                      [styles.title__mobile()]: deviceType === DeviceType.MOBILE,
-                    })}
-                  >
-                    {title}
-                  </p>
-                  <p
-                    className={classNames(styles.description(), {
-                      [styles.description__desktop()]: deviceType === DeviceType.DESKTOP,
-                      [styles.description__mobile()]: deviceType === DeviceType.MOBILE,
-                    })}
-                  >
-                    {product.name}
-                  </p>
+                  <div className={styles.overlay()}>
+                    <p
+                      className={classNames(styles.title(), {
+                        [styles.title__desktop()]: deviceType === DeviceType.DESKTOP,
+                        [styles.title__mobile()]: deviceType === DeviceType.MOBILE,
+                      })}
+                    >
+                      {title}
+                    </p>
+                    <p
+                      className={classNames(styles.description(), {
+                        [styles.description__desktop()]: deviceType === DeviceType.DESKTOP,
+                        [styles.description__mobile()]: deviceType === DeviceType.MOBILE,
+                      })}
+                    >
+                      {product.name}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Anchor>
-          </WidthRestriction>
+              </Anchor>
+            </div>
+          </div>
         );
       }}
     </GetDeviceType>
