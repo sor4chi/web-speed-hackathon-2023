@@ -9,7 +9,6 @@ specifiers:
   '@js-temporal/polyfill': 0.4.3
   '@koa/router': 12.0.0
   '@types/bcrypt': 5.0.0
-  '@types/currency-formatter': 1.5.1
   '@types/koa': 2.13.5
   '@types/koa-bodyparser': 4.3.10
   '@types/koa-compress': 4.0.3
@@ -30,7 +29,6 @@ specifiers:
   core-js: 3.29.0
   cross-env: 7.0.3
   csstype: 3.1.1
-  currency-formatter: 1.5.9
   dataloader: 2.2.2
   date-time-format-timezone: 1.0.22
   dayjs: 1.11.7
@@ -97,7 +95,6 @@ dependencies:
   bcrypt: 5.1.0
   classnames: 2.3.2
   core-js: 3.29.0
-  currency-formatter: 1.5.9
   dataloader: 2.2.2
   date-time-format-timezone: 1.0.22
   dayjs: 1.11.7
@@ -132,7 +129,6 @@ dependencies:
 devDependencies:
   '@babel/core': 7.20.5
   '@types/bcrypt': 5.0.0
-  '@types/currency-formatter': 1.5.1
   '@types/koa': 2.13.5
   '@types/koa-bodyparser': 4.3.10
   '@types/koa-compress': 4.0.3
@@ -1551,10 +1547,6 @@ packages:
       '@types/keygrip': 1.0.2
       '@types/node': 18.11.15
 
-  /@types/currency-formatter/1.5.1:
-    resolution: {integrity: sha512-dJb8hPNOQizmJnqWucEXKd+vnQVpedwY5tB8ADrC9/EVSaglgKeRHCkZKii6QJH+6mjiWObeb3n6wsmoQ7Ycrg==}
-    dev: true
-
   /@types/express-serve-static-core/4.17.31:
     resolution: {integrity: sha512-DxMhY+NAsTwMMFHBTtJFNp5qiHKJ7TeqOo23zVEM9alT1Ml27Q3xcTH0xwxn7Q0BbMcVEJOs/7aQtUWupUQN3Q==}
     dependencies:
@@ -1956,10 +1948,6 @@ packages:
     dependencies:
       mime-types: 2.1.35
       negotiator: 0.6.3
-    dev: false
-
-  /accounting/0.4.1:
-    resolution: {integrity: sha512-RU6KY9Y5wllyaCNBo1W11ZOTnTHMMgOZkIwdOOs6W5ibMTp72i4xIbEA48djxVGqMNTUNbvrP/1nWg5Af5m2gQ==}
     dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.1:
@@ -2629,14 +2617,6 @@ packages:
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
-
-  /currency-formatter/1.5.9:
-    resolution: {integrity: sha512-47reIlQZzLn+WWI8xPDCaunwLd/abGnPwAXpM8hEvjeuRB8CVa4KjkZJ4Eo0MO1OKXqeiel71O04ITz+6NMzdA==}
-    dependencies:
-      accounting: 0.4.1
-      locale-currency: 0.0.2
-      object-assign: 4.1.1
-    dev: false
 
   /dataloader/2.2.2:
     resolution: {integrity: sha512-8YnDaaf7N3k/q5HnTJVuzSyLETjoZjVmHc4AeKAzOvKHEFQKcn64OKBfzHYtE9zGjctNM7V9I0MfnUVLpi7M5g==}
@@ -4513,10 +4493,6 @@ packages:
       pify: 3.0.0
       strip-bom: 3.0.0
     dev: true
-
-  /locale-currency/0.0.2:
-    resolution: {integrity: sha512-5uUCVWBhixSV9x48yONxyGaW7YNGwFqM3f0ue1V+GbcHXGfOLKP+2HrwSFxkQ59V7cgcxahkRLD2Lw/CRfBJAQ==}
-    dev: false
 
   /locate-path/5.0.0:
     resolution: {integrity: sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==}

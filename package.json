@@ -27,7 +27,6 @@
     "bcrypt": "5.1.0",
     "classnames": "2.3.2",
     "core-js": "3.29.0",
-    "currency-formatter": "1.5.9",
     "dataloader": "2.2.2",
     "date-time-format-timezone": "1.0.22",
     "dayjs": "1.11.7",
@@ -62,7 +61,6 @@
   "devDependencies": {
     "@babel/core": "7.20.5",
     "@types/bcrypt": "5.0.0",
-    "@types/currency-formatter": "1.5.1",
     "@types/koa": "2.13.5",
     "@types/koa-bodyparser": "4.3.10",
     "@types/koa-compress": "4.0.3",

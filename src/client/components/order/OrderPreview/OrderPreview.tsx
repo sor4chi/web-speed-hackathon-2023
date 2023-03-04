@@ -1,10 +1,10 @@
-import * as currencyFormatter from 'currency-formatter';
 import type { FC } from 'react';
 import { memo } from 'react';
 
 import type { OrderFragmentResponse } from '../../../graphql/fragments';
 import { useTotalPrice } from '../../../hooks/useTotalPrice';
 import { isEqual } from '../../../utils/object';
+import { formatYen } from '../../../utils/yen';
 import { CartItem } from '../CartItem';
 
 import * as styles from './OrderPreview.styles';
@@ -29,7 +29,7 @@ export const OrderPreview: FC<Props> = memo(({ onRemoveCartItem, onUpdateCartIte
           );
         })}
       </ul>
-      <p className={styles.totalPrice()}>{currencyFormatter.format(totalPrice, { code: 'JPY', precision: 0 })}</p>
+      <p className={styles.totalPrice()}>{formatYen(totalPrice)}</p>
     </div>
   );
 }, isEqual);

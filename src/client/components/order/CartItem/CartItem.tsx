@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import * as currencyFormatter from 'currency-formatter';
 import type { ChangeEventHandler, FC } from 'react';
 
 import type { ShoppingCartItemFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
 import { normalizeCartItemCount } from '../../../utils/normalize_cart_item';
+import { formatYen } from '../../../utils/yen';
 import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
@@ -67,9 +67,7 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
                   ) : null}
                   <div className={styles.details()}>
                     <p className={styles.itemName()}>{item.product.name}</p>
-                    <p className={styles.itemPrice()}>
-                      {currencyFormatter.format(price, { code: 'JPY', precision: 0 })}
-                    </p>
+                    <p className={styles.itemPrice()}>{formatYen(price)}</p>
                   </div>
                 </div>
               </Anchor>
