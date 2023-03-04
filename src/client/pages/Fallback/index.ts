@@ -1,1 +1,1 @@
-export * from './Fallback';
+export { Fallback as default } from './Fallback';
