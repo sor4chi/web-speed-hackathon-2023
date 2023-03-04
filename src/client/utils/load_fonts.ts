@@ -12,7 +12,7 @@ const FONT_FACE_SOURCES: FontFaceSource[] = [
       weight: '700',
     },
     family: 'Noto Serif JP',
-    source: "url('/fonts/NotoSerifJP-Bold.otf')",
+    source: "url('/fonts/NotoSerifJP-Bold.woff2') format('woff2')",
   },
   {
     descripter: {
@@ -21,7 +21,7 @@ const FONT_FACE_SOURCES: FontFaceSource[] = [
       weight: '400',
     },
     family: 'Noto Serif JP',
-    source: "url('/fonts/NotoSerifJP-Regular.otf')",
+    source: "url('/fonts/NotoSerifJP-Regular.woff2') format('woff2')",
   },
 ];
 
