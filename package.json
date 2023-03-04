@@ -8,7 +8,7 @@
     "start:server-dev": "nodemon --watch src/server --ext 'ts,tsx' --exec 'ts-node src/server'",
     "start:server": "cross-env NODE_ENV=production node dist/server/server",
     "build": "npm-run-all -s build:vite build:tsc",
-    "build:tsc": "tsc --build tsconfig.build.json",
+    "build:tsc": "cross-env NODE_ENV=production tsc --build tsconfig.build.json",
     "build:vite": "cross-env NODE_ENV=production vite build",
     "format": "npm-run-all -s format:*",
     "format:prettier": "prettier --write './**/*.{ts,tsx,js,jsx,json}'",
@@ -101,8 +101,7 @@
     "typescript": "4.9.3",
     "vite": "4.1.4",
     "vite-plugin-ejs": "1.6.4",
-    "vite-plugin-top-level-await": "1.2.4",
-    "vite-plugin-wasm": "3.2.1"
+    "vite-plugin-top-level-await": "1.2.4"
   },
   "packageManager": "pnpm@7.24.3",
   "engines": {
