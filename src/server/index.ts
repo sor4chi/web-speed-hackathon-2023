@@ -58,8 +58,22 @@ async function init(): Promise<void> {
     }),
   );
 
-  app.use(serve(rootResolve('dist')));
-  app.use(serve(rootResolve('public')));
+  app.use(
+    serve(rootResolve('dist'), {
+      maxage: 1000 * 60 * 60 * 24 * 365, // 1 year
+      setHeaders(res) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000');
+      },
+    }),
+  );
+  app.use(
+    serve(rootResolve('public'), {
+      maxage: 1000 * 60 * 60 * 24 * 365, // 1 year
+      setHeaders(res) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000');
+      },
+    }),
+  );
   app.use(
     compress({
       br: false, // brotli はpre-compressedで使いたいので一旦無効化
