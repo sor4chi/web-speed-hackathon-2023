@@ -25,4 +25,4 @@ COPY --from=build /usr/bin/sqlite3 /usr/bin/sqlite3
 COPY --from=build --chown=node:node /app /app
 WORKDIR /app
 USER node
-CMD ["dumb-init", "./node_modules/.bin/ts-node", "./src/server/index.ts"]
+CMD ["dumb-init", "node", "./dist/server/server"]
