@@ -28,6 +28,7 @@
     "classnames": "2.3.2",
     "core-js": "3.29.0",
     "currency-formatter": "1.5.9",
+    "dataloader": "2.2.2",
     "date-time-format-timezone": "1.0.22",
     "dayjs": "1.11.7",
     "formik": "2.2.9",

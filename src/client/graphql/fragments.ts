@@ -223,13 +223,30 @@ export type FeatureItemFragmentResponse = Pick<FeatureItem, 'id'> & {
 };
 
 export const FeatureSectionFragment = gql`
-  ${FeatureItemFragment}
-
   fragment FeatureSectionFragment on FeatureSection {
     id
     title
     items {
-      ...FeatureItemFragment
+      id
+      product {
+        id
+        name
+        price
+        media {
+          id
+          isThumbnail
+          file {
+            id
+            filename
+          }
+        }
+        offers {
+          id
+          price
+          startDate
+          endDate
+        }
+      }
     }
   }
 `;
