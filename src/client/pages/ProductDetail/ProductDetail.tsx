@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Helmet } from 'react-helmet';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Layout } from '../../components/application/Layout';
@@ -47,39 +47,38 @@ export const ProductDetail: FC = () => {
     });
   };
 
-  return (
-    <>
-      {product && (
-        <Helmet>
-          <title>{product.name}</title>
-        </Helmet>
-      )}
-      <Layout>
-        <WidthRestriction>
-          <div className={styles.container()}>
-            <section className={styles.details()}>
-              <ProductMediaListPreviewer product={product} />
-              <div className={styles.overview()}>
-                <ProductOverview activeOffer={activeOffer} product={product} />
-              </div>
-              <div className={styles.purchase()}>
-                <ProductPurchaseSection
-                  amountInCart={amountInCart}
-                  isAuthUser={isAuthUser}
-                  onOpenSignInModal={() => handleOpenModal('SIGN_IN')}
-                  onUpdateCartItem={handleUpdateItem}
-                  product={product}
-                />
-              </div>
-            </section>
+  useEffect(() => {
+    if (product) {
+      document.title = product.name;
+    }
+  }, [product]);
 
-            <section className={styles.reviews()}>
-              <h2 className={styles.reviewsHeading()}>レビュー</h2>
-              <ReviewSection hasSignedIn={isAuthUser} onSubmitReview={handleSubmitReview} reviews={reviews} />
-            </section>
-          </div>
-        </WidthRestriction>
-      </Layout>
-    </>
+  return (
+    <Layout>
+      <WidthRestriction>
+        <div className={styles.container()}>
+          <section className={styles.details()}>
+            <ProductMediaListPreviewer product={product} />
+            <div className={styles.overview()}>
+              <ProductOverview activeOffer={activeOffer} product={product} />
+            </div>
+            <div className={styles.purchase()}>
+              <ProductPurchaseSection
+                amountInCart={amountInCart}
+                isAuthUser={isAuthUser}
+                onOpenSignInModal={() => handleOpenModal('SIGN_IN')}
+                onUpdateCartItem={handleUpdateItem}
+                product={product}
+              />
+            </div>
+          </section>
+
+          <section className={styles.reviews()}>
+            <h2 className={styles.reviewsHeading()}>レビュー</h2>
+            <ReviewSection hasSignedIn={isAuthUser} onSubmitReview={handleSubmitReview} reviews={reviews} />
+          </section>
+        </div>
+      </WidthRestriction>
+    </Layout>
   );
 };
