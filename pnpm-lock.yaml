@@ -17,8 +17,6 @@ specifiers:
   '@types/koa-send': 4.1.3
   '@types/koa-session': 5.10.6
   '@types/koa-static': 4.0.2
-  '@types/lodash': 4.14.191
-  '@types/lodash-es': 4.17.6
   '@types/node': 18.11.15
   '@types/react': 18.0.24
   '@types/react-dom': 18.0.8
@@ -53,7 +51,6 @@ specifiers:
   koa-send: 5.0.1
   koa-session: 6.4.0
   koa-static: 5.0.0
-  lodash-es: 4.17.21
   modern-css-reset: 1.4.0
   nodemon: 2.0.20
   npm-run-all: 4.1.5
@@ -115,7 +112,6 @@ dependencies:
   koa-send: 5.0.1
   koa-session: 6.4.0
   koa-static: 5.0.0
-  lodash-es: 4.17.21
   modern-css-reset: 1.4.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -145,8 +141,6 @@ devDependencies:
   '@types/koa-route': 3.2.5
   '@types/koa-send': 4.1.3
   '@types/koa-static': 4.0.2
-  '@types/lodash': 4.14.191
-  '@types/lodash-es': 4.17.6
   '@types/node': 18.11.15
   '@types/react': 18.0.24
   '@types/react-dom': 18.0.8
@@ -1650,16 +1644,6 @@ packages:
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
       '@types/node': 18.11.15
-
-  /@types/lodash-es/4.17.6:
-    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
-    dependencies:
-      '@types/lodash': 4.14.191
-    dev: true
-
-  /@types/lodash/4.14.191:
-    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
-    dev: true
 
   /@types/long/4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}

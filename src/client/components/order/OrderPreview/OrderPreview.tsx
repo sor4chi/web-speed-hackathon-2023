@@ -1,10 +1,10 @@
 import * as currencyFormatter from 'currency-formatter';
-import { isEqual } from 'lodash-es';
 import type { FC } from 'react';
 import { memo } from 'react';
 
 import type { OrderFragmentResponse } from '../../../graphql/fragments';
 import { useTotalPrice } from '../../../hooks/useTotalPrice';
+import { isEqual } from '../../../utils/object';
 import { CartItem } from '../CartItem';
 
 import * as styles from './OrderPreview.styles';

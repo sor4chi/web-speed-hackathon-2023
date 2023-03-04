@@ -1,11 +1,11 @@
 import CanvasKitInit from 'canvaskit-wasm';
 import CanvasKitWasmUrl from 'canvaskit-wasm/bin/canvaskit.wasm?url';
 import classNames from 'classnames';
-import { isEqual } from 'lodash-es';
 import { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
+import { isEqual } from '../../../utils/object';
 import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';

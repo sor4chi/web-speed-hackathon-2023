@@ -1,11 +1,11 @@
 import type { FormikErrors } from 'formik';
 import { useFormik } from 'formik';
-import { isEqual } from 'lodash-es';
 import type { FC } from 'react';
 import { memo } from 'react';
 import * as z from 'zod';
 
 import type { ReviewFragmentResponse } from '../../../graphql/fragments';
+import { isEqual } from '../../../utils/object';
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextArea } from '../../foundation/TextArea';
 import { ReviewList } from '../ReviewList';
