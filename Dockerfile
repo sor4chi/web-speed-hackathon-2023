@@ -11,7 +11,7 @@ COPY databases/ /app/databases/
 COPY public/ /app/public/
 COPY tools/ /app/tools/
 COPY src/ /app/src/
-RUN pnpm install
+RUN pnpm install --frozen-lockfile
 RUN pnpm build
 
 ########################################################################
