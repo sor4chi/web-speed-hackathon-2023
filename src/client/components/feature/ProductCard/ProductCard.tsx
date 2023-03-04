@@ -14,6 +14,10 @@ type Props = {
   product: ProductFragmentResponse;
 };
 
+const convertToSmallImagePath = (path: string) => {
+  return path.replace(/\.jpg$/, '.webp').replace('/products/', '/products_small/');
+};
+
 export const ProductCard: FC<Props> = ({ product }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
 
@@ -26,7 +30,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         {thumbnailFile ? (
           <div className={styles.image()}>
             <AspectRatio ratioHeight={9} ratioWidth={16}>
-              <Image height={126} src={thumbnailFile.filename} width={224} />
+              <Image height={126} src={convertToSmallImagePath(thumbnailFile.filename)} width={224} />
             </AspectRatio>
           </div>
         ) : null}
