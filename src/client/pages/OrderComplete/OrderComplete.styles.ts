@@ -26,6 +26,7 @@ export const noticeDescriptionWrapper = () => css`
 export const noticeDescription = () => css`
   font-family: 'Noto Serif JP', sans-serif;
   text-align: center;
+  font-display: swap;
 `;
 
 export const noticeDescription__desktop = () => css`
