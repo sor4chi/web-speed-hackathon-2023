@@ -1,4 +1,5 @@
 import http from 'node:http';
+import zlib from 'node:zlib';
 
 import { koaMiddleware } from '@as-integrations/koa';
 import gracefulShutdown from 'http-graceful-shutdown';
@@ -37,6 +38,19 @@ async function init(): Promise<void> {
     await next();
   });
 
+  app.use(
+    compress({
+      br: false, // brotli はpre-compressedで使いたいので一旦無効化
+      filter(contentType) {
+        return /text/i.test(contentType) || /json/i.test(contentType) || /javascript/i.test(contentType);
+      },
+      gzip: {
+        flush: zlib.constants.Z_SYNC_FLUSH,
+      },
+      threshold: 2048,
+    }),
+  );
+
   const apolloServer = await initializeApolloServer();
   await apolloServer.start();
 
@@ -72,11 +86,6 @@ async function init(): Promise<void> {
       setHeaders(res) {
         res.setHeader('Cache-Control', 'public, max-age=31536000');
       },
-    }),
-  );
-  app.use(
-    compress({
-      br: false, // brotli はpre-compressedで使いたいので一旦無効化
     }),
   );
 
