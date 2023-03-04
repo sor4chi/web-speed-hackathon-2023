@@ -27,6 +27,7 @@ async function init(): Promise<void> {
   const httpServer = http.createServer(app.callback());
 
   app.keys = ['cookie-key'];
+  // TODO: logger消す
   app.use(logger());
   app.use(bodyParser());
   app.use(session({}, app));
