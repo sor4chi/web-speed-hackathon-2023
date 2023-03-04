@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import type { ChangeEventHandler, FC } from 'react';
-import zipcodeJa from 'zipcode-ja';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
@@ -18,6 +17,21 @@ type Props = {
   onSubmit: (orderFormValue: OrderFormValue) => void;
 };
 
+type IBSNetZipCodeResponse = {
+  status: number;
+  message: string;
+  results: {
+    address1: string;
+    address2: string;
+    address3: string;
+    kana1: string;
+    kana2: string;
+    kana3: string;
+    prefcode: string;
+    zipcode: string;
+  }[];
+};
+
 export const OrderForm: FC<Props> = ({ onSubmit }) => {
   const formik = useFormik<OrderFormValue>({
     initialValues: {
@@ -29,16 +43,23 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     onSubmit,
   });
 
-  const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+  const fetchAddressByZipcode = async (zipCode: string) => {
+    const response = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipCode}`);
+    const data = await response.json();
+    return data as IBSNetZipCodeResponse;
+  };
+
+  const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = async (event) => {
     formik.handleChange(event);
 
     const zipCode = event.target.value;
-    const address = zipcodeJa[zipCode]?.address;
+    if (zipCode.length !== 7) return;
 
-    if (!address) return;
+    const data = await fetchAddressByZipcode(zipCode);
+    if (data.status !== 200) return;
 
-    formik.setFieldValue('prefecture', address.slice(0, 1));
-    formik.setFieldValue('city', address.slice(1, address.length).join(' '));
+    formik.setFieldValue('prefecture', data.results[0].address1);
+    formik.setFieldValue('city', `${data.results[0].address2} ${data.results[0].address3}`);
   };
 
   return (

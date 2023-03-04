@@ -82,7 +82,6 @@ specifiers:
   vite-plugin-ejs: 1.6.4
   vite-plugin-top-level-await: 1.2.4
   vite-plugin-wasm: 3.2.1
-  zipcode-ja: 0.0.7
   zod: 3.20.6
 
 dependencies:
@@ -125,7 +124,6 @@ dependencies:
   styled-components: 5.3.6_7i5myeigehqah43i5u7wbekgba
   throttle-debounce: 5.0.0
   typeorm: 0.3.11_h3l5zcb3i6sggvllyfknv6gs44
-  zipcode-ja: 0.0.7
   zod: 3.20.6
 
 devDependencies:
@@ -6829,10 +6827,6 @@ packages:
 
   /zen-observable/0.8.15:
     resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==}
-    dev: false
-
-  /zipcode-ja/0.0.7:
-    resolution: {integrity: sha512-DJw7EUtu8aCwBrtlDwD/y2owHlkgNDmuC981eDz9EadDd/7/YofvFveImE+nFij0ftVQnZasyrAmW/HC6oIMcA==}
     dev: false
 
   /zod/3.20.6:
