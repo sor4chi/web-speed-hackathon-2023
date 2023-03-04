@@ -5,7 +5,8 @@ import { useState } from 'react';
 import * as z from 'zod';
 
 import { useSignIn } from '../../../hooks/useSignIn';
-import { useCloseModal, useIsOpenModal, useOpenModal } from '../../../store/modal';
+import { useSignInModal } from '../../../store/signinModal';
+import { useSignUpModal } from '../../../store/signupModal';
 import { Modal } from '../../foundation/Modal';
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
@@ -26,11 +27,17 @@ export type SignInForm = {
 };
 
 export const SignInModal: FC = () => {
-  const isOpened = useIsOpenModal('SIGN_IN');
+  const { isSignInModalOpen, setIsSignInModalOpen } = useSignInModal();
+  const { setIsSignUpModalOpen } = useSignUpModal();
   const { signIn } = useSignIn();
 
-  const handleOpenModal = useOpenModal();
-  const handleCloseModal = useCloseModal();
+  const handleSubscribeModalOpen = () => {
+    setIsSignUpModalOpen(true);
+    setIsSignInModalOpen(false);
+  };
+  const handleCloseModal = () => {
+    setIsSignInModalOpen(false);
+  };
 
   const [submitError, setSubmitError] = useState<Error | null>(null);
   const formik = useFormik<SignInForm>({
@@ -67,14 +74,14 @@ export const SignInModal: FC = () => {
   });
 
   return (
-    <Modal onHide={handleCloseModal} show={isOpened}>
+    <Modal onHide={handleCloseModal} show={isSignInModalOpen}>
       <div className={styles.inner()}>
         <header className={styles.header()}>
           <h2 className={styles.heading()}>ログイン</h2>
           <button
             className={styles.switchToSignUpButton()}
             data-testid="modal-switch-to-signup"
-            onClick={() => handleOpenModal('SIGN_UP')}
+            onClick={() => handleSubscribeModalOpen()}
           >
             会員登録
           </button>

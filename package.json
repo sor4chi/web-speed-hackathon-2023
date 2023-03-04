@@ -51,7 +51,6 @@
     "react-is": "18.2.0",
     "react-overlays": "5.2.1",
     "react-router-dom": "6.4.5",
-    "recoil": "0.7.6",
     "reflect-metadata": "0.1.13",
     "setimmediate": "1.0.5",
     "sqlite3": "5.1.4",

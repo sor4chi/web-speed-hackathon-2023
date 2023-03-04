@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 
 import { useAuthUser } from '../../../hooks/useAuthUser';
-import { useOpenModal } from '../../../store/modal';
+import { useSignInModal } from '../../../store/signinModal';
 import { Anchor } from '../../foundation/Anchor';
 import { Image } from '../../foundation/Image';
 
@@ -10,7 +10,7 @@ import * as styles from './Header.styles';
 
 export const Header: FC = () => {
   const { isAuthUser } = useAuthUser();
-  const handleOpenModal = useOpenModal();
+  const { setIsSignInModalOpen } = useSignInModal();
 
   return (
     <header className={styles.container()}>
@@ -29,7 +29,7 @@ export const Header: FC = () => {
         <button
           className={styles.signInButton()}
           data-testid="navigate-signin"
-          onClick={() => handleOpenModal('SIGN_IN')}
+          onClick={() => setIsSignInModalOpen(true)}
         >
           <FaUser color="#222222" height={20} width={20} />
         </button>
