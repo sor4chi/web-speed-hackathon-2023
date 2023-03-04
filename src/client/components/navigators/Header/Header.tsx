@@ -20,7 +20,7 @@ export const Header: FC = () => {
         </div>
       </Anchor>
       {isAuthUser ? (
-        <Anchor data-testid="navigate-order" href={'/order'}>
+        <Anchor dataTestId="navigate-order" href={'/order'}>
           <div className={styles.orderLink()}>
             <FaShoppingCart color="#222222" height={20} width={20} />
           </div>
