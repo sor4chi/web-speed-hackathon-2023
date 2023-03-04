@@ -7,7 +7,6 @@ import { getMediaType } from '../../../../utils/get_media_type';
 import { Image } from '../../../foundation/Image';
 
 import * as styles from './MediaItem.styles';
-import { loadThumbnail } from './loadThumbnail';
 
 type Props = {
   file: MediaFileFragmentResponse;
@@ -21,7 +20,7 @@ export const MediaItem: FC<Props> = ({ file }) => {
     if (mediaType === 'image') {
       return setImageSrc(file.filename);
     }
-    loadThumbnail(file.filename).then((url) => setImageSrc(url));
+    setImageSrc(file.filename.replace(/.mp4$/, '.webp'));
   }, [file.filename, mediaType]);
 
   if (imageSrc === undefined) {
