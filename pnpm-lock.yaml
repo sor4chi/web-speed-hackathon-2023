@@ -35,6 +35,7 @@ specifiers:
   csstype: 3.1.1
   currency-formatter: 1.5.9
   date-time-format-timezone: 1.0.22
+  dayjs: 1.11.7
   eslint: 8.29.0
   eslint-config-prettier: 8.5.0
   eslint-import-resolver-typescript: 3.5.3
@@ -103,6 +104,7 @@ dependencies:
   core-js: 3.29.0
   currency-formatter: 1.5.9
   date-time-format-timezone: 1.0.22
+  dayjs: 1.11.7
   formik: 2.2.9_react@18.2.0
   graphql: 16.6.0
   http-graceful-shutdown: 3.1.13
@@ -2657,6 +2659,10 @@ packages:
 
   /date-time-format-timezone/1.0.22:
     resolution: {integrity: sha512-4hEeKPpNlbFO05ldht9FwJEy2g1xL7kU3dTPY5hNSd1AyMjrrIeUS54kSWgt/KdttYshhjDMIonU+vCmL4NjVw==}
+    dev: false
+
+  /dayjs/1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
     dev: false
 
   /debug/2.6.9:
