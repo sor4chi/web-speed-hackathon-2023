@@ -45,6 +45,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
                       loading="eager"
                       src={imageDataUrl}
                       style={{
+                        maxHeight: '576px',
                         objectFit: 'cover',
                         objectPosition: 'center',
                         width: '100%',
