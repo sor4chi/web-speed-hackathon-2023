@@ -29,7 +29,9 @@ export default defineConfig(async () => {
       minify: true,
       rollupOptions: {
         output: {
-          experimentalMinChunkSize: 40960,
+          manualChunks: {
+            appolo: ['@apollo/client'],
+          },
         },
         plugins: [
           visualizer({
