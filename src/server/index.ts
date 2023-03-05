@@ -7,7 +7,6 @@ import gracefulShutdown from 'http-graceful-shutdown';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import compress from 'koa-compress';
-import logger from 'koa-logger';
 import route from 'koa-route';
 import session from 'koa-session';
 
@@ -33,8 +32,6 @@ async function init(): Promise<void> {
 
   app.keys = ['cookie-key'];
   app.proxy = true;
-  // TODO: logger消す
-  app.use(logger());
   app.use(bodyParser());
   app.use(
     session(
