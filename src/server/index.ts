@@ -26,19 +26,28 @@ async function init(): Promise<void> {
   await dataSource.initialize();
 
   const app = new Koa();
-  const httpServer = http.createServer(app.callback());
-
-  app.keys = ['cookie-key'];
   app.use(
     cors({
       credentials: true,
       origin: '*',
     }),
   );
+  const httpServer = http.createServer(app.callback());
+
+  app.keys = ['cookie-key'];
   // TODO: logger消す
   app.use(logger());
   app.use(bodyParser());
-  app.use(session({}, app));
+  app.use(
+    session(
+      {
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+      },
+      app,
+    ),
+  );
 
   app.use(async (ctx, next) => {
     ctx.set('Cache-Control', 'no-store');
