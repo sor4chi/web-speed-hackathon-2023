@@ -22,7 +22,7 @@ ENV NODE_ENV production
 
 COPY --from=build /usr/bin/dumb-init /usr/bin/dumb-init
 COPY --from=build /usr/bin/sqlite3 /usr/bin/sqlite3
-COPY --from=build --chown=node:node /app/dist /app/dist
-WORKDIR /app/dist
+COPY --from=build --chown=node:node /app /app
+WORKDIR /app
 USER node
-CMD ["dumb-init", "node", "./server/server"]
+CMD ["dumb-init", "node", "./dist/server/server"]
