@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useEffect } from 'react';
-import { useRoute } from 'wouter';
+import { useParams } from 'react-router-dom';
 
 import { Layout } from '../../components/application/Layout';
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
@@ -21,8 +21,7 @@ import { normalizeCartItemCount } from '../../utils/normalize_cart_item';
 import * as styles from './ProductDetail.styles';
 
 export const ProductDetail: FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, params] = useRoute('/product/:productId');
+  const params = useParams();
   const productId = params?.productId;
   const { setIsSignInModalOpen } = useSignInModal();
 

@@ -50,13 +50,13 @@
     "react-icons": "4.7.1",
     "react-is": "18.2.0",
     "react-overlays": "5.2.1",
+    "react-router-dom": "6.8.2",
     "reflect-metadata": "0.1.13",
     "setimmediate": "1.0.5",
     "sqlite3": "5.1.4",
     "styled-components": "5.3.6",
     "throttle-debounce": "5.0.0",
-    "typeorm": "0.3.11",
-    "wouter": "2.10.0"
+    "typeorm": "0.3.11"
   },
   "devDependencies": {
     "@babel/core": "7.20.5",

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
-import { Link } from 'wouter';
+import { Link } from 'react-router-dom';
 
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { Image } from '../../foundation/Image';
