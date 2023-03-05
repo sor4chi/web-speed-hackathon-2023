@@ -86,9 +86,5 @@ export const Order: FC = () => {
 
   document.title = '購入手続き';
 
-  return (
-    <Layout>
-      <WidthRestriction>{renderContents()}</WidthRestriction>
-    </Layout>
-  );
+  return <WidthRestriction>{renderContents()}</WidthRestriction>;
 };

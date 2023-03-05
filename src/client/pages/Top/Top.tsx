@@ -36,24 +36,20 @@ export const Top: FC = () => {
   }, [thumbnailFile]);
 
   return (
-    <>
-      <Layout>
-        <div>
-          <ProductHeroImage imageDataUrl={imageDataUrl} product={recommendation?.product} title="今週のオススメ" />
+    <div>
+      <ProductHeroImage imageDataUrl={imageDataUrl} product={recommendation?.product} title="今週のオススメ" />
 
-          <div className={styles.featureList()}>
-            {features &&
-              features.map((featureSection) => {
-                return (
-                  <div key={featureSection.id} className={styles.feature()}>
-                    <h2 className={styles.featureHeading()}>{featureSection.title}</h2>
-                    <ProductList featureSection={featureSection} />
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-      </Layout>
-    </>
+      <div className={styles.featureList()}>
+        {features &&
+          features.map((featureSection) => {
+            return (
+              <div key={featureSection.id} className={styles.feature()}>
+                <h2 className={styles.featureHeading()}>{featureSection.title}</h2>
+                <ProductList featureSection={featureSection} />
+              </div>
+            );
+          })}
+      </div>
+    </div>
   );
 };

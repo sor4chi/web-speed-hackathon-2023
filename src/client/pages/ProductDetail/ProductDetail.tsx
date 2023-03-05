@@ -59,31 +59,29 @@ export const ProductDetail: FC = () => {
   }, [product]);
 
   return (
-    <Layout>
-      <WidthRestriction>
-        <div className={styles.container()}>
-          <section className={styles.details()}>
-            <ProductMediaListPreviewer product={product} />
-            <div className={styles.overview()}>
-              <ProductOverview activeOffer={activeOffer} product={product} />
-            </div>
-            <div className={styles.purchase()}>
-              <ProductPurchaseSection
-                amountInCart={amountInCart}
-                isAuthUser={isAuthUser}
-                onOpenSignInModal={() => handleOpenModal()}
-                onUpdateCartItem={handleUpdateItem}
-                product={product}
-              />
-            </div>
-          </section>
+    <WidthRestriction>
+      <div className={styles.container()}>
+        <section className={styles.details()}>
+          <ProductMediaListPreviewer product={product} />
+          <div className={styles.overview()}>
+            <ProductOverview activeOffer={activeOffer} product={product} />
+          </div>
+          <div className={styles.purchase()}>
+            <ProductPurchaseSection
+              amountInCart={amountInCart}
+              isAuthUser={isAuthUser}
+              onOpenSignInModal={() => handleOpenModal()}
+              onUpdateCartItem={handleUpdateItem}
+              product={product}
+            />
+          </div>
+        </section>
 
-          <section className={styles.reviews()}>
-            <h2 className={styles.reviewsHeading()}>レビュー</h2>
-            <ReviewSection hasSignedIn={isAuthUser} onSubmitReview={handleSubmitReview} reviews={reviews} />
-          </section>
-        </div>
-      </WidthRestriction>
-    </Layout>
+        <section className={styles.reviews()}>
+          <h2 className={styles.reviewsHeading()}>レビュー</h2>
+          <ReviewSection hasSignedIn={isAuthUser} onSubmitReview={handleSubmitReview} reviews={reviews} />
+        </section>
+      </div>
+    </WidthRestriction>
   );
 };

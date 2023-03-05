@@ -25,15 +25,11 @@ export const NotFound: FC = () => {
   document.title = 'ページが見つかりませんでした';
 
   return (
-    <>
-      <Layout>
-        <div className={styles.container()}>
-          <div className={styles.inner()}>
-            <p className={styles.mainParagraph()}>ページが存在しません</p>
-            <p className={styles.subParagraph()}>Not Found</p>
-          </div>
-        </div>
-      </Layout>
-    </>
+    <div className={styles.container()}>
+      <div className={styles.inner()}>
+        <p className={styles.mainParagraph()}>ページが存在しません</p>
+        <p className={styles.subParagraph()}>Not Found</p>
+      </div>
+    </div>
   );
 };
