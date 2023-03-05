@@ -39,11 +39,15 @@ export const title = () => css`
 `;
 
 export const title__desktop = () => css`
-  font-size: 1.5rem;
+  @media (max-width: 1024px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const title__mobile = () => css`
-  font-size: 1.125rem;
+  @media (min-width: 1024px) {
+    font-size: 1.125rem;
+  }
 `;
 
 export const description = () => css`
@@ -52,9 +56,13 @@ export const description = () => css`
 `;
 
 export const description__desktop = () => css`
-  font-size: 1rem;
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
 `;
 
 export const description__mobile = () => css`
-  font-size: 0.875rem;
+  @media (min-width: 1024px) {
+    font-size: 0.875rem;
+  }
 `;

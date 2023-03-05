@@ -30,11 +30,15 @@ export const noticeDescription = () => css`
 `;
 
 export const noticeDescription__desktop = () => css`
-  font-size: 1.125rem;
+  @media (max-width: 1024px) {
+    font-size: 1.125rem;
+  }
 `;
 
 export const noticeDescription__mobile = () => css`
-  font-size: 1rem;
+  @media (min-width: 1024px) {
+    font-size: 1rem;
+  }
 `;
 
 export const recommended = () => css`

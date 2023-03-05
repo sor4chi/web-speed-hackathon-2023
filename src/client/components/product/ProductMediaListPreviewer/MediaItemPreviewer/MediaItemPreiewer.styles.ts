@@ -11,9 +11,13 @@ export const video = () => css`
 `;
 
 export const video__mobile = () => css`
-  max-width: 100vw;
+  @media (min-width: 1024px) {
+    max-width: 100vw;
+  }
 `;
 
 export const video__desktop = () => css`
-  max-width: 1024px;
+  @media (max-width: 1024px) {
+    max-width: 1024px;
+  }
 `;

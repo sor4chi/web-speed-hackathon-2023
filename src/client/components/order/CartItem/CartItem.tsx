@@ -7,7 +7,6 @@ import { normalizeCartItemCount } from '../../../utils/normalize_cart_item';
 import { formatYen } from '../../../utils/yen';
 import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
-import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { Image } from '../../foundation/Image';
 import { OutlineButton } from '../../foundation/OutlineButton';
 import { ProductOfferLabel } from '../../product/ProductOfferLabel';
@@ -31,71 +30,48 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
   };
 
   return (
-    <GetDeviceType>
-      {({ deviceType }) => {
-        return (
-          <div
-            className={classNames(styles.container(), {
-              [styles.container__desktop()]: deviceType === DeviceType.DESKTOP,
-              [styles.container__mobile()]: deviceType === DeviceType.MOBILE,
-            })}
-          >
-            <div className={styles.item()}>
-              <Anchor href={`/product/${item.product.id}`}>
-                <div className={styles.itemInner()}>
-                  {thumbnailFile ? (
-                    <div
-                      className={classNames(styles.thumbnail(), {
-                        [styles.thumbnail__desktop()]: deviceType === DeviceType.DESKTOP,
-                        [styles.thumbnail__mobile()]: deviceType === DeviceType.MOBILE,
-                      })}
-                    >
-                      <AspectRatio ratioHeight={9} ratioWidth={16}>
-                        <Image
-                          fill
-                          src={thumbnailFile.filename
-                            .replace(/.jpg$/, '.webp')
-                            .replace('/products/', '/products_small/')}
-                        />
-                      </AspectRatio>
-                      {activeOffer !== undefined && (
-                        <div className={styles.offerLabel()}>
-                          <ProductOfferLabel size="base">タイムセール中</ProductOfferLabel>
-                        </div>
-                      )}
-                    </div>
-                  ) : null}
-                  <div className={styles.details()}>
-                    <p className={styles.itemName()}>{item.product.name}</p>
-                    <p className={styles.itemPrice()}>{formatYen(price)}</p>
+    <div className={(styles.container(), styles.container__desktop(), styles.container__mobile())}>
+      <div className={styles.item()}>
+        <Anchor href={`/product/${item.product.id}`}>
+          <div className={styles.itemInner()}>
+            {thumbnailFile ? (
+              <div className={(styles.thumbnail(), styles.thumbnail__desktop(), styles.thumbnail__mobile())}>
+                <AspectRatio ratioHeight={9} ratioWidth={16}>
+                  <Image
+                    fill
+                    src={thumbnailFile.filename.replace(/.jpg$/, '.webp').replace('/products/', '/products_small/')}
+                  />
+                </AspectRatio>
+                {activeOffer !== undefined && (
+                  <div className={styles.offerLabel()}>
+                    <ProductOfferLabel size="base">タイムセール中</ProductOfferLabel>
                   </div>
-                </div>
-              </Anchor>
-            </div>
-            <div
-              className={classNames(styles.container(), {
-                [styles.controller__desktop()]: deviceType === DeviceType.DESKTOP,
-                [styles.controller__mobile()]: deviceType === DeviceType.MOBILE,
-              })}
-            >
-              <label className={styles.counter()}>
-                個数:
-                <input
-                  className={styles.counterInput()}
-                  defaultValue={item.amount}
-                  max={999}
-                  min={1}
-                  onBlur={updateCount}
-                  type="number"
-                />
-              </label>
-              <OutlineButton onClick={() => onRemove(item.product.id)} size="base">
-                削除
-              </OutlineButton>
+                )}
+              </div>
+            ) : null}
+            <div className={styles.details()}>
+              <p className={styles.itemName()}>{item.product.name}</p>
+              <p className={styles.itemPrice()}>{formatYen(price)}</p>
             </div>
           </div>
-        );
-      }}
-    </GetDeviceType>
+        </Anchor>
+      </div>
+      <div className={classNames(styles.container(), styles.controller__desktop(), styles.controller__mobile())}>
+        <label className={styles.counter()}>
+          個数:
+          <input
+            className={styles.counterInput()}
+            defaultValue={item.amount}
+            max={999}
+            min={1}
+            onBlur={updateCount}
+            type="number"
+          />
+        </label>
+        <OutlineButton onClick={() => onRemove(item.product.id)} size="base">
+          削除
+        </OutlineButton>
+      </div>
+    </div>
   );
 };
