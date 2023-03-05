@@ -79,24 +79,24 @@ async function init(): Promise<void> {
     }),
   );
 
-  app.use(
-    serve(rootResolve('dist'), {
-      maxage: 1000 * 60 * 60 * 24 * 365, // 1 year
-      setHeaders(res) {
-        res.setHeader('Cache-Control', 'public, max-age=31536000');
-      },
-    }),
-  );
-  app.use(
-    serve(rootResolve('public'), {
-      maxage: 1000 * 60 * 60 * 24 * 365, // 1 year
-      setHeaders(res) {
-        res.setHeader('Cache-Control', 'public, max-age=31536000');
-      },
-    }),
-  );
+  // app.use(
+  //   serve(rootResolve('dist'), {
+  //     maxage: 1000 * 60 * 60 * 24 * 365, // 1 year
+  //     setHeaders(res) {
+  //       res.setHeader('Cache-Control', 'public, max-age=31536000');
+  //     },
+  //   }),
+  // );
+  // app.use(
+  //   serve(rootResolve('public'), {
+  //     maxage: 1000 * 60 * 60 * 24 * 365, // 1 year
+  //     setHeaders(res) {
+  //       res.setHeader('Cache-Control', 'public, max-age=31536000');
+  //     },
+  //   }),
+  // );
 
-  app.use(async (ctx) => await send(ctx, rootResolve('/dist/index.html')));
+  // app.use(async (ctx) => await send(ctx, rootResolve('/dist/index.html')));
 
   httpServer.listen({ port: PORT }, () => {
     console.log(`🚀 Server ready at http://localhost:${PORT}`);
