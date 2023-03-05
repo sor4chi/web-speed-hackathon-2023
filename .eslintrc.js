@@ -18,7 +18,7 @@ module.exports = {
     ecmaVersion: 2022,
     sourceType: 'module',
   },
-  plugins: ['import', 'sort', '@typescript-eslint'],
+  plugins: ['import', 'unused-imports', 'sort', '@typescript-eslint'],
   rules: {
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/consistent-type-imports': ['error'],
@@ -48,6 +48,7 @@ module.exports = {
     'react/prop-types': ['off'],
     'react/react-in-jsx-scope': ['off'],
     'sort/imports': ['off'],
+    'unused-imports/no-unused-imports': 'warn',
   },
   settings: {
     'import/parsers': {
