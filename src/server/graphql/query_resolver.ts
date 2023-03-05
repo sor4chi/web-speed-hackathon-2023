@@ -20,7 +20,6 @@ export const queryResolver: QueryResolver = {
     return dataSource.manager.find(FeatureSection);
   },
   me: async (_parent, _args, { session }) => {
-    console.log('session', session);
     if (session['userId'] == null) {
       return null;
     }
