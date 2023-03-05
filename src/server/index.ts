@@ -2,6 +2,7 @@ import http from 'node:http';
 import zlib from 'node:zlib';
 
 import { koaMiddleware } from '@as-integrations/koa';
+import cors from '@koa/cors';
 import gracefulShutdown from 'http-graceful-shutdown';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
@@ -28,6 +29,12 @@ async function init(): Promise<void> {
   const httpServer = http.createServer(app.callback());
 
   app.keys = ['cookie-key'];
+  app.use(
+    cors({
+      credentials: true,
+      origin: '7bf10e31.web-speed-hackathon-2023.pages.dev',
+    }),
+  );
   // TODO: logger消す
   app.use(logger());
   app.use(bodyParser());
