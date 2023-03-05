@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 
 import { ApolloServer } from '@apollo/server';
-import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled';
 
 import type { Context } from '../context';
 import { rootResolve } from '../utils/root_resolve';
@@ -40,8 +40,7 @@ export async function initializeApolloServer(): Promise<ApolloServer<Context>> {
   );
 
   const server = new ApolloServer({
-    // TODO: 消す
-    plugins: [ApolloServerPluginLandingPageLocalDefault({ includeCookies: true })],
+    plugins: [ApolloServerPluginLandingPageDisabled()],
     resolvers: {
       FeatureItem: featureItemResolver,
       FeatureSection: featureSectionResolver,
