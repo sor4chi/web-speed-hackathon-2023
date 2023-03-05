@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 
-import { Layout } from '../../components/application/Layout';
 import { ProductList } from '../../components/feature/ProductList';
 import { ProductHeroImage } from '../../components/product/ProductHeroImage';
 import { useFeatures } from '../../hooks/useFeatures';

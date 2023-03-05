@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 
-import { Layout } from '../../components/application/Layout';
 
 import * as styles from './Fallback.styles';
 

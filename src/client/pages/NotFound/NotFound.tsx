@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 
-import { Layout } from '../../components/application/Layout';
 import { loadFonts } from '../../utils/load_fonts';
 
 import * as styles from './NotFound.styles';

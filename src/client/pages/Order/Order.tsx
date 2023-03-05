@@ -1,8 +1,7 @@
 import type { FC } from 'react';
 import { lazy } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import { Layout } from '../../components/application/Layout';
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 // import { OrderForm } from '../../components/order/OrderForm';
 const OrderForm = lazy(() => import('../../components/order/OrderForm'));

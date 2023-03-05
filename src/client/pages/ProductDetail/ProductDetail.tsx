@@ -2,7 +2,6 @@ import type { FC } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Layout } from '../../components/application/Layout';
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 import { ProductMediaListPreviewer } from '../../components/product/ProductMediaListPreviewer';
 import { ProductOverview } from '../../components/product/ProductOverview';

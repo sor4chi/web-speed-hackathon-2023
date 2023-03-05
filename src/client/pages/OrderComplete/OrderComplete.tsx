@@ -3,13 +3,11 @@ import type { FC } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Layout } from '../../components/application/Layout';
 import { AspectRatio } from '../../components/foundation/AspectRatio';
 import { DeviceType, GetDeviceType } from '../../components/foundation/GetDeviceType';
 import { PrimaryAnchor } from '../../components/foundation/PrimaryAnchor';
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 import { ProductHeroImage } from '../../components/product/ProductHeroImage';
-import { MediaFileFragmentResponse } from '../../graphql/fragments';
 import { useAuthUser } from '../../hooks/useAuthUser';
 import { useRecommendation } from '../../hooks/useRecommendation';
 import { loadFonts } from '../../utils/load_fonts';
