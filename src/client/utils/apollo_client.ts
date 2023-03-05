@@ -1,7 +1,5 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
-const link = new HttpLink();
-
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   defaultOptions: {
@@ -15,6 +13,7 @@ export const apolloClient = new ApolloClient({
       fetchPolicy: 'network-only',
     },
   },
-  link,
-  uri: 'https://sor4chi-web-speed-hackathon-2023.fly.dev/graphql',
+  link: new HttpLink({
+    uri: 'https://sor4chi-web-speed-hackathon-2023.fly.dev/graphql',
+  }),
 });

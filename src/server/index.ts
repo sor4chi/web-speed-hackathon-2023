@@ -32,7 +32,7 @@ async function init(): Promise<void> {
   app.use(
     cors({
       credentials: true,
-      origin: '7bf10e31.web-speed-hackathon-2023.pages.dev',
+      origin: '*',
     }),
   );
   // TODO: logger消す
