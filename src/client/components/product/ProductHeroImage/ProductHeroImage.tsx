@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { memo, useEffect, useState } from 'react';
+import { memo } from 'react';
 import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
@@ -11,25 +11,11 @@ import * as styles from './ProductHeroImage.styles';
 
 type Props = {
   product?: ProductFragmentResponse;
+  imageDataUrl?: string;
   title: string;
 };
 
-const FALLBACK_IMAGE_DATA_URL = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
-
-export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
-  const thumbnailFile = product?.media.find((productMedia) => productMedia.isThumbnail)?.file;
-
-  const [imageDataUrl, setImageDataUrl] = useState<string>();
-
-  useEffect(() => {
-    if (!thumbnailFile) return;
-    setImageDataUrl(thumbnailFile.filename.replace(/.jpg$/, '.webp'));
-  }, [thumbnailFile]);
-
-  if (imageDataUrl === undefined) {
-    setImageDataUrl(FALLBACK_IMAGE_DATA_URL);
-  }
-
+export const ProductHeroImage: FC<Props> = memo(({ imageDataUrl, product, title }) => {
   return (
     <GetDeviceType>
       {({ deviceType }) => {
