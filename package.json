@@ -32,7 +32,6 @@
     "dataloader": "2.2.2",
     "date-time-format-timezone": "1.0.22",
     "dayjs": "1.11.7",
-    "formik": "2.2.9",
     "graphql": "16.6.0",
     "http-graceful-shutdown": "3.1.13",
     "koa": "2.14.1",
