@@ -10,9 +10,7 @@ type Props = {
 };
 
 export const Anchor: FC<Props> = ({ children, dataTestId, href }) => (
-  <span className={styles.container()}>
-    <Link data-testid={dataTestId} to={href}>
-      {children}
-    </Link>
-  </span>
+  <Link className={styles.container()} data-testid={dataTestId} to={href}>
+    {children}
+  </Link>
 );
