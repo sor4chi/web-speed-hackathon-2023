@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { lazy } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'wouter';
 
 import { Layout } from '../../components/application/Layout';
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
@@ -15,7 +15,8 @@ import { useUpdateCartItem } from '../../hooks/useUpdateCartItems';
 import * as styles from './Order.styles';
 
 export const Order: FC = () => {
-  const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setLocation] = useLocation();
 
   const { authUser, authUserLoading, isAuthUser } = useAuthUser();
   const { updateCartItem } = useUpdateCartItem();
@@ -26,7 +27,7 @@ export const Order: FC = () => {
     return null;
   }
   if (!isAuthUser) {
-    navigate('/');
+    setLocation('/');
     return null;
   }
 
@@ -74,7 +75,7 @@ export const Order: FC = () => {
                   zipCode: values.zipCode,
                 },
               }).then(() => {
-                navigate('/order/complete');
+                setLocation('/order/complete');
               });
             }}
           />

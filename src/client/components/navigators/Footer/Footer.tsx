@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'wouter';
 
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { Image } from '../../foundation/Image';
@@ -27,9 +27,9 @@ export const Footer: FC = () => {
                 </li>
               ))}
             </ul>
-            <NavLink to="/">
+            <Link href="/">
               <Image src="/icons/logo.webp" style={{ width: '205px' }} />
-            </NavLink>
+            </Link>
           </footer>
         );
       }}

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'wouter';
 
 import { Layout } from '../../components/application/Layout';
 import { AspectRatio } from '../../components/foundation/AspectRatio';
@@ -16,7 +16,8 @@ import { loadFonts } from '../../utils/load_fonts';
 import * as styles from './OrderComplete.styles';
 
 export const OrderComplete: FC = () => {
-  const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setLocation] = useLocation();
   const [isReadyFont, setIsReadyFont] = useState(false);
   const { authUserLoading, isAuthUser } = useAuthUser();
   const { recommendation } = useRecommendation();
@@ -31,7 +32,7 @@ export const OrderComplete: FC = () => {
     return null;
   }
   if (!isAuthUser) {
-    navigate('/');
+    setLocation('/');
     return null;
   }
 

@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'wouter';
 
 import * as styles from './Anchor.styles';
 
@@ -10,7 +10,9 @@ type Props = {
 };
 
 export const Anchor: FC<Props> = ({ children, dataTestId, href }) => (
-  <Link className={styles.container()} data-testid={dataTestId} to={href}>
-    {children}
-  </Link>
+  <span className={styles.container()}>
+    <Link data-testid={dataTestId} href={href}>
+      {children}
+    </Link>
+  </span>
 );
