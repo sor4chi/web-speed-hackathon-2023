@@ -40,6 +40,7 @@ export async function initializeApolloServer(): Promise<ApolloServer<Context>> {
   );
 
   const server = new ApolloServer({
+    // TODO: 消す
     plugins: [ApolloServerPluginLandingPageLocalDefault({ includeCookies: true })],
     resolvers: {
       FeatureItem: featureItemResolver,
