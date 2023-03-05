@@ -27,7 +27,7 @@ export const Footer: FC = () => {
                 </li>
               ))}
             </ul>
-            <Link href="/">
+            <Link to="/">
               <Image src="/icons/logo.webp" style={{ width: '205px' }} />
             </Link>
           </footer>

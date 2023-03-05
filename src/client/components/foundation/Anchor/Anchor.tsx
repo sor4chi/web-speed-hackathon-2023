@@ -11,7 +11,7 @@ type Props = {
 
 export const Anchor: FC<Props> = ({ children, dataTestId, href }) => (
   <span className={styles.container()}>
-    <Link data-testid={dataTestId} href={href}>
+    <Link data-testid={dataTestId} to={href}>
       {children}
     </Link>
   </span>
