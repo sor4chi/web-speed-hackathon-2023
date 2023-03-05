@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Layout } from '../../components/application/Layout';
@@ -9,17 +9,37 @@ import { DeviceType, GetDeviceType } from '../../components/foundation/GetDevice
 import { PrimaryAnchor } from '../../components/foundation/PrimaryAnchor';
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 import { ProductHeroImage } from '../../components/product/ProductHeroImage';
+import { MediaFileFragmentResponse } from '../../graphql/fragments';
 import { useAuthUser } from '../../hooks/useAuthUser';
 import { useRecommendation } from '../../hooks/useRecommendation';
 import { loadFonts } from '../../utils/load_fonts';
 
 import * as styles from './OrderComplete.styles';
+const FALLBACK_IMAGE_DATA_URL = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
 export const OrderComplete: FC = () => {
   const navigate = useNavigate();
   const [isReadyFont, setIsReadyFont] = useState(false);
   const { authUserLoading, isAuthUser } = useAuthUser();
   const { recommendation } = useRecommendation();
+
+  const thumbnailFile = recommendation?.product?.media.find((productMedia) => productMedia.isThumbnail)?.file;
+
+  const [imageDataUrl, setImageDataUrl] = useState<string>();
+
+  useEffect(() => {
+    if (!thumbnailFile) return;
+    setImageDataUrl(thumbnailFile.filename.replace(/.jpg$/, '.webp'));
+  }, [thumbnailFile]);
+
+  useMemo(() => {
+    if (!thumbnailFile) {
+      setImageDataUrl(FALLBACK_IMAGE_DATA_URL);
+      return;
+    }
+    const image = new Image();
+    image.src = thumbnailFile.filename.replace(/.jpg$/, '.webp');
+  }, [thumbnailFile]);
 
   useEffect(() => {
     loadFonts().then(() => {
@@ -60,7 +80,11 @@ export const OrderComplete: FC = () => {
 
             <div className={styles.recommended()}>
               <h2 className={styles.recommendedHeading()}>こちらの商品もオススメです</h2>
-              <ProductHeroImage product={recommendation.product} title={recommendation.product.name} />
+              <ProductHeroImage
+                imageDataUrl={imageDataUrl}
+                product={recommendation.product}
+                title={recommendation.product.name}
+              />
             </div>
 
             <div className={styles.backToTopButtonWrapper()}>
