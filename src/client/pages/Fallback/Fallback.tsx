@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 
-
 import * as styles from './Fallback.styles';
 
 export const Fallback: FC = () => {
