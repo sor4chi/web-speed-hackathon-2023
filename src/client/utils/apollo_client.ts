@@ -16,5 +16,5 @@ export const apolloClient = new ApolloClient({
     },
   },
   link,
-  uri: '/graphql',
+  uri: 'https://sor4chi-web-speed-hackathon-2023.fly.dev/graphql',
 });
