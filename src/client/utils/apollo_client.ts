@@ -14,6 +14,7 @@ export const apolloClient = new ApolloClient({
     },
   },
   link: new HttpLink({
+    credentials: 'include',
     uri: 'https://sor4chi-web-speed-hackathon-2023.fly.dev/graphql',
   }),
 });
